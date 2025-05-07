@@ -1,0 +1,27 @@
+{
+  "name": "tasklygerenciadortarefas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jest.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GigicaNeves/tasklyGerenciadorTarefas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GigicaNeves/tasklyGerenciadorTarefas/issues"
+  },
+  "homepage": "https://github.com/GigicaNeves/tasklyGerenciadorTarefas#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
