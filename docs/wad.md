@@ -22,7 +22,7 @@
 
 # <a name="c1"></a>1. Introdução
 
-O WAD (Website Analysis Document) é o documento central de uma aplicação web. Ele tem como objetivo detalhar o funcionamento, desenvolvimento e principais aspectos técnicos de um software web. Neste documento, serão apresentadas as principais características e decisões de design do Taskly, incluindo a lógica de funcionamento, arquitetura e componentes utilizados.
+O WAD (Website Analysis Document) é o documento central de uma aplicação web. Ele tem como objetivo detalhar o funcionamento, desenvolvimento e principais aspectos técnicos de um software web. Neste documento, serão apresentadas as principais características e decisões do Taskly, incluindo a lógica de funcionamento, arquitetura e componentes utilizados.
 
 Dados recentes indicam que distúrbios e doenças mentais afetam desproporcionalmente as mulheres, em grande parte devido à sobrecarga histórica de responsabilidades sociais e familiares. Essa realidade muitas vezes leva à negligência do autocuidado e compromete a saúde mental.
 
@@ -40,20 +40,21 @@ O projeto em questão apresenta dois principais modelos de banco de dados: o mod
 
 O modelo lógico tem como objetivo fornecer uma visão geral dos processos operacionais ou transacionais, apresentando as entidades e suas relações de maneira abstrata. Já o modelo físico é mais detalhado, oferecendo informações que ajudam os administradores e desenvolvedores a implementar a lógica de negócios em um banco de dados real.
 
-Modelo Lógico
+**Modelo Lógico** <br>
 Abaixo, é possível observar o diagrama lógico:
 
 <div align="center"> <sub>Figura X (Número da imagem) - Modelo Lógico de Banco de Dados</sub> <img src="./assets/modelo_logico.jpg" width="100%"> <sup>Fonte: Material produzido pela autora (2025)</sup> </div>
-Este diagrama lógico inclui cinco principais entidades/tabelas: users, tasks, category, day_of_week e tasks_week_days. Ele explicita de forma clara os principais "objetos" e seus relacionamentos no sistema, como a tabela users, que controla o login dos usuários, e as tabelas restantes, que gerenciam as tarefas. Além disso, cada relação entre tabelas é marcada por linhas, com símbolos que representam relações "um para muitos". Embora o modelo aparente simplicidade, suas regras de negócio trazem um grau considerável de complexidade.
+Este diagrama lógico inclui cinco principais entidades/tabelas: users, tasks, category, day_of_week e tasks_week_days. Ele explicita de forma clara os principais "objetos" e seus relacionamentos no sistema, como a tabela users, que controla o login dos usuários, e as tabelas restantes, que gerenciam as tarefas. Além disso, cada relação entre tabelas é marcada por linhas, com símbolos que representam relações "um para muitos". Embora o modelo aparente simplicidade, suas regras de negócio trazem um grau considerável de complexidade.<br>
+<br>
 
-Modelo Físico
+**Modelo Físico** <br>
 Agora, é possível observar o diagrama físico:
 
 <div align="center"> <sub>Figura X (Número da imagem) - Modelo Físico</sub> <img src="./assets/modelo_fisico.png" width="100%"> <sup>Fonte: Material produzido pela autora através da plataforma Supabase (2025)</sup> </div>
 
 O modelo físico foi gerado diretamente pela plataforma Supabase, refletindo a estrutura real do banco de dados utilizado. Ele mantém as mesmas entidades e regras descritas no modelo lógico, mas com detalhes adicionais que facilitam a implementação e o gerenciamento do sistema.
 
-Dessa forma, é possível perceber que, mesmo com um número relativamente pequeno de tabelas, a modelagem do banco de dados do Taskly apresenta uma complexidade significativa. Isso é resultado de uma arquitetura que prioriza segurança e eficiência no manejo dos dados, visando sempre o melhor uso possível.
+Dessa forma, é possível perceber que, mesmo com um número relativamente pequeno de tabelas, a modelagem do banco de dados do Taskly apresenta uma complexidade de entendimento significativa. Tudo isso, busca emplementar uma arquitetura que prioriza a eficiência no manejo dos dados, visando sempre o melhor uso possível.
 
 ### <a name="c4"></a> 4.0 Wireframes
 
