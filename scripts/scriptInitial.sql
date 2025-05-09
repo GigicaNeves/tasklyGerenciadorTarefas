@@ -1,5 +1,5 @@
 -- Tabela de usuários
-CREATE TABLE Users (
+CREATE TABLE users (
     id INT PRIMARY KEY,
     user_nome VARCHAR(100),
     email VARCHAR(100) UNIQUE,
@@ -7,13 +7,13 @@ CREATE TABLE Users (
 );
 
 -- Tabela de categorias
-CREATE TABLE Category (
+CREATE TABLE category (
     id INT PRIMARY KEY,
     category_nome VARCHAR(100)
 );
 
 -- Tabela de tarefas
-CREATE TABLE Tasks (
+CREATE TABLE tasks (
     id INT PRIMARY KEY,
     title VARCHAR(200),
     description TEXT,
@@ -26,7 +26,7 @@ CREATE TABLE Tasks (
 );
 
 -- Tabela dos dias da semana
-CREATE TABLE Days_of_week (
+CREATE TABLE days_of_week (
     id INT PRIMARY KEY,
     day_nome VARCHAR(20)
 );
