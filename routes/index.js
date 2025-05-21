@@ -9,6 +9,8 @@ router.get("/", (req, res) => {
 
 // Define as rotas
 router.get("/tasks", taskController.getTasks);
-router.post("/tasks", taskController.addTask);
+router.post("/tasks/add", taskController.addTask);
+router.put("/tasks/:id", taskController.editTask);
+router.delete("/tasks/:id", taskController.deleteTask);
 
 module.exports = router;
