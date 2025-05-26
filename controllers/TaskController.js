@@ -1,18 +1,11 @@
 // controllers/TarefaController.js
-const pool = require("../config/db");
+const taskModel = require("../models/taskModel");
 
 // Criar uma nova tarefa
 exports.addTask = async (req, res) => {
-  const { nome, descricao } = req.body;
-
-  const query =
-    "INSERT INTO tasks (nome, descricao) VALUES ($1, $2) RETURNING *";
-  const values = [nome, descricao];
-
   try {
-    const result = await pool.query(query, values);
-    const tarefa = result.rows[0];
-    res.status(201).json(tarefa);
+    const task = await taskModel.createTask(req.body);
+    res.status(201).json(task);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -20,11 +13,9 @@ exports.addTask = async (req, res) => {
 
 // Listar todas as tarefas
 exports.getTasks = async (req, res) => {
-  const query = "SELECT * FROM tasks";
-
   try {
-    const result = await pool.query(query);
-    res.status(200).json(result.rows);
+    const tasks = await taskModel.getAllTasks();
+    res.status(200).json(tasks);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -33,19 +24,12 @@ exports.getTasks = async (req, res) => {
 // Editar uma tarefa
 exports.editTask = async (req, res) => {
   const { id } = req.params;
-  const { nome, descricao, status } = req.body;
-
-  const query = `
-    UPDATE tasks SET nome = $1, descricao = $2, status = $3, updated_at = CURRENT_TIMESTAMP
-    WHERE id = $4 RETURNING *`;
-  const values = [nome, descricao, status, id];
-
   try {
-    const result = await pool.query(query, values);
-    if (result.rows.length === 0) {
+    const updatedTask = await taskModel.updateTask(id, req.body);
+    if (!updatedTask) {
       return res.status(404).json({ message: "Tarefa não encontrada" });
     }
-    res.status(200).json(result.rows[0]);
+    res.status(200).json(updatedTask);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -54,13 +38,9 @@ exports.editTask = async (req, res) => {
 // Excluir uma tarefa
 exports.deleteTask = async (req, res) => {
   const { id } = req.params;
-
-  const query = "DELETE FROM tasks WHERE id = $1 RETURNING *";
-  const values = [id];
-
   try {
-    const result = await pool.query(query, values);
-    if (result.rows.length === 0) {
+    const deletedTask = await taskModel.deleteTask(id);
+    if (!deletedTask) {
       return res.status(404).json({ message: "Tarefa não encontrada" });
     }
     res.status(200).json({ message: "Tarefa excluída com sucesso" });

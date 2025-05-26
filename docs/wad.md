@@ -140,19 +140,123 @@ Dessa forma, é possível perceber que, mesmo com um número relativamente peque
 
 ### 3.1.1 BD e Models (Semana 5)
 
-_Descreva aqui os Models implementados no sistema web_
+O Banco de Dados é responsável por armazenar todas as informações da aplicação de forma organizada. Já os Models são responsáveis por se comunicar com esse banco, realizando operações como criar, buscar, atualizar e excluir dados. Essa separação ajuda a manter o sistema mais organizado e fácil de manter. Abaixo há uma descrição do funcionamento do models principal do sistema
+
+```javascript
+// OBS: alguns dados da tarefa entram como NULL nessa primeira versão, pois não há validação de entrada. Em uma versão futura, deve-se adicionar validações para garantir que os dados sejam válidos antes de inserir ou atualizar no banco de dados.
+
+// models/taskModel.js
+const db = require("../config/db");
+
+// Listar todas as tarefas
+async function getAllTasks() {
+  const result = await db.query("SELECT * FROM tasks");
+  return result.rows;
+}
+
+// Criar uma nova tarefa
+async function createTask({
+  title,
+  description,
+  categoria_id,
+  status,
+  last_reset,
+  user_id,
+}) {
+  const query = `
+    INSERT INTO tasks (title, description, categoria_id, status, last_reset, user_id)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *;
+  `;
+  const values = [
+    title,
+    description,
+    categoria_id,
+    status,
+    last_reset,
+    user_id,
+  ];
+  const result = await db.query(query, values);
+  return result.rows[0];
+}
+
+// Editar uma tarefa
+async function updateTask(
+  id,
+  { title, description, categoria_id, status, last_reset, user_id }
+) {
+  const query = `
+    UPDATE tasks
+    SET title = $1, description = $2, categoria_id = $3, status = $4, last_reset = $5, user_id = $6
+    WHERE id = $7
+    RETURNING *;
+  `;
+  const values = [
+    title,
+    description,
+    categoria_id,
+    status,
+    last_reset,
+    user_id,
+    id,
+  ];
+  const result = await db.query(query, values);
+  return result.rows[0];
+}
+
+// Excluir uma tarefa
+async function deleteTask(id) {
+  const result = await db.query("DELETE FROM tasks WHERE id = $1 RETURNING *", [
+    id,
+  ]);
+  return result.rows[0];
+}
+
+module.exports = {
+  getAllTasks,
+  createTask,
+  updateTask,
+  deleteTask,
+};
+```
+
+O sistema implementa um modelo principal responsável pela manipulação de dados relacionados às tarefas, localizado no arquivo taskModel.js. Este model realiza operações básicas de acesso e persistência de dados utilizando comandos SQL executados por meio de uma conexão estabelecida com o banco de dados PostgreSQL, através do supabase, configurada no módulo db. Todas as funções são assíncronas e seguem o padrão CRUD (Create, Read, Update, Delete), permitindo listar, criar, editar e excluir tarefas.
+
+A função getAllTasks realiza a listagem completa das tarefas cadastradas no sistema, executando uma consulta SQL simples que retorna todas as linhas da tabela tasks. Para a criação de novas tarefas, utiliza-se a função createTask, que recebe um objeto contendo os campos title, description, categoria_id, status, last_reset e user_id. Esses dados são inseridos na tabela por meio de um comando INSERT, e a tarefa recém-criada é retornada com todos os seus campos.
+
+A edição de tarefas é feita pela função updateTask, que recebe o id da tarefa a ser alterada e um objeto com os novos valores para os mesmos campos utilizados na criação. A operação é realizada com um comando UPDATE, e a tarefa atualizada é retornada. Já a exclusão de tarefas é tratada pela função deleteTask, que executa um comando DELETE com base no id da tarefa e retorna os dados da tarefa removida.
+
+Nesta versão inicial do sistema, ainda não há validações de entrada para garantir a integridade dos dados fornecidos pelo usuário, o que permite que alguns campos, como categoria_id e last_reset, sejam inseridos com valor NULL. Em versões futuras, pretende-se incluir camadas de validação para assegurar que todos os dados inseridos ou atualizados no banco sejam válidos e consistentes com as regras de negócio do sistema.
 
 ### 3.2. Arquitetura (Semana 5)
 
-_Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário._
+A arquitetura de software define como os diferentes componentes de um sistema estão organizados e se comunicam. O sistema apresentado segue o padrão de arquitetura MVC (Model-View-Controller), separando a aplicação em três camadas principais: View (interface do usuário), Controller (lógica de controle) e Model (acesso e manipulação dos dados). A seguir, detalha-se o fluxo de dados entre essas camadas:
 
-**Instruções para criação do diagrama de arquitetura**
+<div align="center">
+<sub>Figura X (Número da imagem) - Diagrama de componentes V2.0</sub>
+<img src="./assets/diagrama_componentes.png" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
 
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
+1. **Interação do Usuário com a View**
+   O fluxo se inicia quando o usuário interage com a interface gráfica da aplicação (View), composta futuramente por arquivos como LoginPage.jsx, HomePage.jsx, TaskModal.jsx e outros componentes React. Essas páginas capturam ações do usuário, como cliques em botões, envios de formulários ou preenchimento de campos.
 
-_Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View._
+2. **Envio de Requisições para o Controller**
+   Ao ocorrer uma interação, a View envia uma requisição para a camada de Controller correspondente. Por exemplo, quando o usuário acessa, é criada uma chamada para o controller pegar todas as tarefas criadas no sistema.
+
+3. **Processamento da Requisição pelo Controller**
+   O Controller atua como intermediador entre a View e o Model. Ele recebe os dados enviados pela interface, realiza validações e processa a lógica de negócio necessária. Se for preciso acessar ou modificar dados, o Controller aciona o Model correspondente.
+
+4. **Acesso ao Banco de Dados via Model**
+   O Model é responsável por interagir diretamente com o banco de dados. Ele executa comandos de leitura, inserção, atualização ou exclusão de dados. Por exemplo,os Models como TaskModel.js, CategoryModel.js, UsersModel.js, entre outros, contêm métodos como getTasks(), insertUser(), deleteTask() que atuam acessando e modificando o banco.
+
+5. **Retorno dos Dados**
+   Após a execução da operação no banco de dados, o Model retorna os dados para o Controller, que os trata, quando necessário, e os envia de volta para a View. A resposta inclui dados como listas de tarefas e futuramente categorias, dias da semana, etc.
+
+6. **Atualização da Interface**
+   Por fim, a View recebe os dados retornados do Controller e os utiliza para atualizar a interface apresentada ao usuário, garantindo uma experiência interativa e dinâmica.
+
+**OBS:** É válido mencionar que alguns arquivos não são listados no diagrama, mas contribuem diretamente para o sistema, como script inicial "server.js" e os arquivos de rotas, representados no sistema por "/routes/index.js".
 
 ### 3.3. Wireframes (Semana 03 - opcional)
 
