@@ -9,7 +9,7 @@ const taskController = require("../controllers/TaskController");
 
 // Rota raiz atualizada
 router.get("/", (req, res) => {
-  res.render("tasks");
+  res.render("main");
   // Vai procurar por views/index.ejs
 });
 

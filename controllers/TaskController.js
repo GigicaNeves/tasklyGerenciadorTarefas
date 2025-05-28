@@ -4,6 +4,7 @@ const taskModel = require("../models/taskModel");
 // Criar uma nova tarefa
 exports.addTask = async (req, res) => {
   try {
+    console.log("Dados recebidos:", req.body);
     const task = await taskModel.createTask(req.body);
     res.status(201).json(task);
   } catch (err) {
