@@ -1,22 +1,19 @@
+const express = require("express");
+const bodyParser = require("body-parser"); // ou use express.json()
 const cors = require("cors");
 const routes = require("./routes");
-const express = require("express");
-const path = require("path");
+
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 8080; // você está testando na porta 8080
 
-app.use(express.json());
+const path = require("path");
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, "public"))); // se quiser usar CSS futuramente
 
-// (Opcional, mas recomendado se usa frontend separado)
+// Middlewares
 app.use(cors());
-
-// Serve os arquivos estáticos da build do React
-app.use(express.static(path.join(__dirname, "views/dist")));
-
-// Redireciona todas as rotas para o index.html do React
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "views/dist", "index.html"));
-});
+app.use(bodyParser.json()); // ou: app.use(express.json());
 
 // Usa as rotas definidas em routes.js
 app.use("/", routes);
