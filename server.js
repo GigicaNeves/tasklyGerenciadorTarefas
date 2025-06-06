@@ -7,7 +7,7 @@ const app = express();
 const port = 8080; // você está testando na porta 8080
 
 const path = require("path");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views", "pages"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public"))); // se quiser usar CSS futuramente
 

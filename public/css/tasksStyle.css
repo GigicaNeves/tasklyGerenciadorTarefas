@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f2f7ff;
+}
+
+nav {
+  width: 100vw;
+  height: 60px;
+  background-color: #f2f7ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  position: relative;
+  background: linear-gradient(to bottom, #b2c9ff, #f2f7ff);
+}
+
+.logo-container {
+}
+
+.logo {
+  margin-top: 1vw;
+  width: 10vw;
+  height: auto;
+}
+
+.title-nav-container {
+  display: flex;
+  align-items: right;
+  justify-content: center;
+  height: auto;
+  flex-direction: row;
+  column-gap: 1vw;
+}
+
+.title-nav {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.title-nav:hover {
+  background-color: #9d71e8;
+  color: #f2f7ff;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+#active {
+  background-color: #9d71e8;
+  color: #f2f7ff;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.add-tarefa {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  cursor: pointer;
+  padding: 4px 8px;
+  margin: 0 2px;
+}
+
+#btn-cancel-edit {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+#btn-cancel-edit:hover {
+  background-color: #d32f2f;
+}

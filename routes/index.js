@@ -9,8 +9,16 @@ const taskController = require("../controllers/TaskController");
 
 // Rota raiz atualizada
 router.get("/", (req, res) => {
-  res.render("tasks");
+  res.render("home");
   // Vai procurar por views/index.ejs
+});
+
+router.get("/tasks/page", (req, res) => {
+  res.render("tasks"); // abre views/about.ejs
+});
+
+router.get("/tasks/control", (req, res) => {
+  res.render("control"); // abre views/about.ejs
 });
 
 // Definição as rotas
