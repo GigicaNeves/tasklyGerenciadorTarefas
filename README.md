@@ -37,8 +37,6 @@ _Coloque aqui o link para seu projeto publicado e link para vídeo de demonstra�
 
 A arquitetura escolhida para o projeto foi o padrão MVC (Model-View-Controller). Assim, entre os arquivos e diretórios presentes na raiz do projeto, definem-se as seguintes estruturas:
 
-**assets:** aqui estão os arquivos relacionados a elementos não-estruturados deste repositório, como imagens.
-
 **config:** contém arquivos de configuração do sistema, como conexões com o banco de dados, variáveis de ambiente e parâmetros globais.
 
 **controllers:** responsáveis por lidar com a lógica de negócios e as interações entre as rotas e os modelos, processando as requisições e respostas da API.
@@ -51,21 +49,25 @@ A arquitetura escolhida para o projeto foi o padrão MVC (Model-View-Controller)
 
 **node_modules:** contém todos os pacotes e dependências instalados via npm. Não deve ser alterado manualmente.
 
+**public**: armazena os arquivos estáticos da aplicação, como imagens, ícones, fontes, scripts JavaScript de front-end e folhas de estilo já compiladas, que são acessados diretamente pelo navegador.
+
 **routes:** define as rotas da aplicação, mapeando URLs para controladores específicos. Cada rota representa um endpoint da API.
 
 **scripts:** scripts utilitários, testes automatizados e outros códigos auxiliares que ajudam no desenvolvimento e manutenção do projeto.
 
 **services:** contém serviços que encapsulam lógica complexa, como chamadas a APIs externas, manipulação de dados e regras de negócios específicas.
 
-**styles:** armazena os arquivos CSS, SASS ou outras folhas de estilo que definem o design e aparência da aplicação.
-
 **tests:** diretório para testes unitários e de integração, essenciais para garantir a qualidade e robustez do código.
+
+**views**: armazena os arquivos de template da aplicação em .ejs, que definem a estrutura visual das páginas renderizadas pelo servidor.
 
 **.env:** arquivo para variáveis de ambiente, como chaves de API, strings de conexão e outros dados sensíveis que não devem ser expostos publicamente.
 
 **.gitignore:** lista de arquivos e diretórios que o Git deve ignorar, como node_modules, .env e outros dados temporários ou sensíveis.
 
 **jest.config.js:** arquivo de configuração para o Jest, utilizado para testes automatizados na aplicação.
+
+**package-lock.json**: armazena informações detalhadas sobre as versões exatas das dependências instaladas, garantindo que a aplicação seja executada da mesma forma em diferentes ambientes.
 
 **package.json:** arquivo que contém as dependências do projeto, scripts npm, metadados e informações importantes para a execução da aplicação.
 
@@ -100,6 +102,8 @@ npm start
 
 - 0.1.0 - 09/05/2025 <br>
   Modelagem de dados e estrututa inicial do projeto.
+- 0.2.0 - 08/06/2025 <br>
+  Conexão com a interface e estilização implementada.
 
 ## 📋 Licença/License
 
