@@ -1,4 +1,4 @@
-<!-- Descrição: Este arquivo é o ponto de entrada do usuário, demonstrando as principais funçoes referente a tasks.-->
+<!-- Descrição: Este arquivo é o ponto de entrada do usuário, demonstrando as principais funções referentes a tasks. -->
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -7,69 +7,91 @@
     <title>Tarefas</title>
     <link rel="stylesheet" href="/css/tasksStyle.css" />
 
-    <!--Importação de fontes-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Importação de fontes do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-
     <header>
-   <nav>
-      <div class="logo-container">
-        <img src="/assets/logo.png" alt="Logo" class="logo"/>
-      </div>
-      <div class="title-nav-container"><a href="/" class="title-nav">Home</a> <a href="/tasks/page" class="title-nav" id="active" >Gerenciamento</a></div>
-    </nav>
+      <nav>
+        <div class="logo-container">
+          <img src="/assets/logo.png" alt="Logo" class="logo" />
+        </div>
+        <div class="title-nav-container">
+          <a href="/" class="title-nav">Home</a>
+          <a href="/tasks/page" class="title-nav" id="active">Gerenciamento</a>
+        </div>
+      </nav>
     </header>
- 
 
     <main>
+      <div class="title-section-container">
+        <h1>Gerencie suas tarefas</h1>
+        <p>
+          Edite, exclua e crie novas tarefas facilmente. Organize seu dia a dia
+          com eficiência.
+        </p>
+      </div>
 
-      <button onclick="modalCriar()"><span class="button-add" id="button-add">Adicionar Tarefa</span></button>
+      <!-- Botão para abrir o formulário de criação de tarefa -->
+      <button onclick="modalCriar()" class="button-add-click" id="button-add">
+        <span class="button-add" id="button-add-text">Adicionar Tarefa</span>
+      </button>
 
-    <div class="add-tarefa" id="form-task-container">
-      <h1 id="title-tasks">Criar nova tarefa</h1>
+      <!-- Formulário para criar/editar tarefa -->
+      <div class="add-tarefa" id="form-task-container">
+        <h1 id="title-tasks">Criar nova tarefa</h1>
+        <form id="form-task">
+          <div class="inputs">
+            <input type="hidden" id="task-id" />
+            <input
+              type="text"
+              id="title"
+              placeholder="Título da tarefa"
+              required
+              class="input"
+            />
+            <textarea
+              id="description"
+              placeholder="Descrição da tarefa"
+              required
+            ></textarea>
+          </div>
+          <br />
+          <button type="submit" class="submit">Adicionar Tarefa</button>
+          <button type="button" id="btn-cancel-edit" style="display: none">
+            Cancelar
+          </button>
+        </form>
+      </div>
 
-      <form id="form-task">
-        <input type="hidden" id="task-id" />
-        <input type="text" id="title" placeholder="Título da tarefa" required />
-        <br /><br />
-        <textarea
-          id="description"
-          placeholder="Descrição da tarefa"
-          required
-        ></textarea>
-        <br /><br />
-        <button type="submit">Adicionar Tarefa</button>
-        <button type="button" id="btn-cancel-edit" style="display: none">
-          Cancelar
-        </button>
-      </form>
-    </div>
+      <br />
 
-    <br />
+      <!-- Tabela para exibir as tarefas -->
+      <table>
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="task-body">
+          <!-- Conteúdo será adicionado com JavaScript -->
+        </tbody>
+      </table>
+    </main>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Descrição</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="task-body">
-        <!-- Conteúdo será adicionado com JavaScript -->
-      </tbody>
-      </main>
-
-      <footer>
-
-      </footer>
-    </table>
+    <footer>
+      <!-- Rodapé vazio -->
+    </footer>
 
     <script>
-
+      // Função para abrir/fechar o formulário de criação de tarefa
       async function modalCriar() {
         const modal = document.getElementById("form-task-container");
         const buttonAdd = document.getElementById("button-add");
@@ -82,8 +104,9 @@
         }
         modal.style.display = "none";
         buttonAdd.textContent = "Adicionar Tarefa";
-      } 
+      }
 
+      // Função para carregar as tarefas do backend
       async function carregarTarefas() {
         try {
           const resposta = await fetch("/tasks");
@@ -92,12 +115,14 @@
           const tbody = document.getElementById("task-body");
           tbody.innerHTML = ""; // Limpa antes de adicionar
 
+          // Se não houver tarefas, exibe mensagem
           if (tasks.length === 0) {
             tbody.innerHTML =
               "<tr><td colspan='3'>Nenhuma tarefa encontrada.</td></tr>";
             return;
           }
 
+          // Adiciona cada tarefa na tabela
           tasks.forEach((task) => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
@@ -115,6 +140,7 @@
         }
       }
 
+      // Seletores dos campos do formulário
       const form = document.getElementById("form-task");
       const inputId = document.getElementById("task-id");
       const inputTitle = document.getElementById("title");
@@ -122,8 +148,8 @@
       const btnCancel = document.getElementById("btn-cancel-edit");
       const btnSubmit = form.querySelector("button[type=submit]");
 
+      // Função para iniciar edição de uma tarefa
       function iniciarEdicao(task) {
-        
         inputId.value = task.id;
         inputTitle.value = task.title;
         inputDescription.value = task.description;
@@ -131,6 +157,7 @@
         btnCancel.style.display = "inline-block";
       }
 
+      // Evento para cancelar edição
       btnCancel.addEventListener("click", () => {
         inputId.value = "";
         form.reset();
@@ -138,20 +165,28 @@
         btnCancel.style.display = "none";
         const modal = document.getElementById("form-task-container");
         modal.style.display = "none";
+        const buttonAdd = document.getElementById("button-add");
+        buttonAdd.style.display = "flex";
+        buttonAdd.disabled = false;
       });
 
+      // Evento para editar ou excluir tarefas
       document
         .getElementById("task-body")
         .addEventListener("click", async (event) => {
           const target = event.target;
 
+          // Editar tarefa
           if (target.classList.contains("btn-edit")) {
             const modal = document.getElementById("form-task-container");
-                    const title = document.getElementById("title-tasks");
-                    title.textContent = "Editar Tarefa";
+            const title = document.getElementById("title-tasks");
+            title.textContent = "Editar Tarefa";
+            const buttonAdd = document.getElementById("button-add");
+            buttonAdd.style.display = "none";
+            buttonAdd.disabled = true;
+            modal.scrollIntoView({ behavior: "smooth" });
+            modal.style.display = "flex";
 
-        modal.style.display = "flex";
-        
             const id = target.getAttribute("data-id");
 
             try {
@@ -162,6 +197,7 @@
             } catch (err) {
               console.error(err);
             }
+            // Excluir tarefa
           } else if (target.classList.contains("btn-delete")) {
             const id = target.getAttribute("data-id");
 
@@ -182,6 +218,7 @@
           }
         });
 
+      // Evento de envio do formulário (criar ou editar tarefa)
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -189,7 +226,13 @@
         const title = inputTitle.value.trim();
         const description = inputDescription.value.trim();
         const modal = document.getElementById("form-task-container");
+
         modal.style.display = "none";
+        title.textContent = "Adicionar tarefa";
+        const buttonAdd = document.getElementById("button-add");
+        buttonAdd.style.display = "flex";
+        buttonAdd.textContent = "Adicionar tarefa";
+        buttonAdd.disabled = false;
 
         if (!title || !description) {
           alert("Preencha título e descrição");
@@ -198,7 +241,7 @@
 
         try {
           if (id) {
-            // Atualizar tarefa
+            // Atualizar tarefa existente
             const response = await fetch(`/tasks/${id}`, {
               method: "PUT",
               headers: { "Content-Type": "application/json" },

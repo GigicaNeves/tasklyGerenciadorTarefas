@@ -6,7 +6,7 @@
     <title>Minhas Tasks</title>
     <link rel="stylesheet" href="/css/homeStyle.css" />
 
-    <!-- Importação de fontes -->
+    <!-- Importação de fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +18,11 @@
     <header>
       <nav>
         <div class="logo-container">
+          <!-- Logo do sistema -->
           <img src="/assets/logo.png" alt="Logo" class="logo" />
         </div>
         <div class="title-nav-container">
+          <!-- Navegação entre páginas -->
           <a href="/" class="title-nav" id="active">Home</a>
           <a href="/tasks/page" class="title-nav">Gerenciamento</a>
         </div>
@@ -29,50 +31,88 @@
 
     <main>
       <div class="title-section-container">
+        <!-- Título e descrição da página -->
         <h1>Minhas Tarefas</h1>
         <p>
-          Acompanhe tudo o que precisa ser feito. Veja suas tarefas organizadas
-          em um só lugar.
+          Acompanhe tudo o que precisa ser feito para você. Veja seus hábitos
+          organizados em um só lugar.
         </p>
       </div>
+      <!-- Local onde as tarefas serão exibidas -->
       <div id="task-body"></div>
+
+      <div class="title-section-container">
+        <!-- Título e descrição da página -->
+        <h1>O que oferecemos</h1>
+        <p>
+          O Taskly é um aplicativo simples feito para ajudar você a focar no que
+          realmente importa: o seu bem-estar. Nele, você pode registrar,
+          visualizar, editar e excluir tarefas de autocuidado de forma prática.
+          A proposta é oferecer um espaço leve para criar e manter hábitos
+          saudáveis no dia a dia. Afinal, pequenos cuidados constantes podem
+          gerar grandes transformações — e o Taskly está aqui para apoiar você
+          nessa jornada.
+        </p>
+        <img src="/assets/autocuidado.png" alt="Imagem de autocuidado" />
+      </div>
+
+      <div class="title-section-container">
+        <!-- Título e descrição da página -->
+        <h1>Planejamentos futuros</h1>
+        <p>
+          O Taskly hoje oferece uma experiência simples e direta para organizar
+          tarefas de autocuidado. No entanto, já estão sendo planejadas novas
+          funcionalidades para versões futuras, como categorias personalizadas,
+          visualização semanal, marcação de tarefas concluídas, lembretes e
+          relatórios de progresso. Tudo isso será desenvolvido com cuidado para
+          manter o Taskly leve, acessível e focado em apoiar sua rotina — agora
+          e no futuro.
+        </p>
+      </div>
     </main>
 
     <footer>
-      <img src="/assets/logo.png" alt="Logo" class="logo-footer" />
+      <p></p>
     </footer>
 
     <script>
+      // Função para carregar as tarefas do backend
       async function carregarTarefas() {
         try {
+          // Faz uma requisição para a rota /tasks
           const resposta = await fetch("/tasks");
+          // Converte a resposta para JSON
           const tasks = await resposta.json();
 
+          // Seleciona o elemento onde as tarefas serão exibidas
           const tbody = document.getElementById("task-body");
-          tbody.innerHTML = ""; // Limpa antes de adicionar
+          tbody.innerHTML = ""; // Limpa o conteúdo anterior
 
+          // Se não houver tarefas, exibe uma mensagem
           if (tasks.length === 0) {
             tbody.innerHTML =
               "<tr><td colspan='3'>Nenhuma tarefa encontrada.</td></tr>";
             return;
           }
 
+          // Para cada tarefa, cria um bloco HTML e adiciona na página
           tasks.forEach((task) => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
             <div class="task-container"> 
             <h2 class="title-task">${task.title}</h2>
-            <p class="description">Descrição: ${task.description}</p>
+            <p class="description">Descrição: <br> ${task.description}</p>
             </div>
-    
           `;
             tbody.appendChild(tr);
           });
         } catch (err) {
+          // Caso ocorra erro na requisição, exibe no console
           console.error("Erro ao carregar tarefas:", err);
         }
       }
 
+      // Chama a função ao carregar a página
       carregarTarefas();
     </script>
   </body>
