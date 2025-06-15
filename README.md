@@ -6,6 +6,10 @@
 
 # Taskly - Autocuidado sem complicação
 
+<video width="600" controls>
+  <source src="public/assets/taskly_demo_rapida.mp4" type="video/mp4">
+</video>
+
 ## Responsável
 
 - <a href="https://www.linkedin.com/in/giovanna-neves-rodrigues-6927262b8/">Giovanna Neves Rodrigues</a>
@@ -32,6 +36,29 @@ Taskly é uma aplicação web desenvolvida para auxiliar mulheres a organizarem 
 ## 📝 Link de demonstração
 
 [Acesso ao vídeo de demonstração da aplicação!](https://youtu.be/9OksHi6g4Ko)
+
+## 👩🏼‍💻 Tecnologias Utilizadas
+
+- JavaScript
+  Linguagem de programação usada para tornar páginas web interativas, com ações dinâmicas no navegador.
+
+- HTML
+  Linguagem de marcação usada para estruturar o conteúdo de páginas na web, como textos, imagens, botões e links.
+
+- CSS
+  Linguagem de estilo responsável pela aparência das páginas HTML, definindo cores, espaçamentos, fontes e layout.
+
+- EJS
+  Motor de templates que permite integrar código JavaScript dentro do HTML, facilitando a criação de páginas dinâmicas em aplicações Node.js.
+
+- SQL
+  Linguagem padrão para manipulação de bancos de dados relacionais, permitindo inserir, buscar, atualizar e excluir dados.
+
+- Supabase
+  Plataforma de backend como serviço (BaaS) que fornece uma alternativa ao Firebase, baseada em PostgreSQL, com autenticação, APIs e banco de dados integrados.
+
+- MVC
+  Padrão de arquitetura que organiza a aplicação em três partes: Model (dados), View (interface) e Controller (lógica), facilitando a manutenção e separação de responsabilidades.
 
 ## 📁 Estrutura de pastas
 

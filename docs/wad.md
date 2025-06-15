@@ -517,7 +517,15 @@ Em termos técnicos, a estrutura foi desenvolvida em EJS, com o uso de HTML, CSS
 
 [Link de acesso ao vídeo](https://youtu.be/9OksHi6g4Ko)
 
-O sistema web final consiste em um CRUD simples para cadastro de tasks, desenvolvido com as tecnologias Express, Supabase, HTML, JavaScript, EJS, entre outras. O desenvolvimento foi realizado durante o Módulo 2 (Aplicação Web) e teve como finalidade consolidar os conhecimentos adquiridos, além de contribuir para a construção de um portfólio. A visão inicial do sistema é disposta abaixo:
+O sistema web final consiste em um CRUD simples para cadastro de tasks, desenvolvido com as tecnologias e ferramentas Express, HTML, JavaScript, EJS, entre outras, com ênfase nas seguintes:
+
+MVC - Organização do código em três camadas: dados (Model), interface (View) e lógica de controle (Controller).
+
+Supabase: Plataforma que fornece um banco de dados PostgreSQL com autenticação, API automática e outras ferramentas para aplicações web.
+
+Fetch: Método usado no front-end para se comunicar com o servidor via HTTP.
+
+O desenvolvimento foi realizado durante o Módulo 2 (Aplicação Web) e teve como finalidade consolidar os conhecimentos adquiridos, além de contribuir para a construção de um portfólio. A visão inicial do sistema é disposta abaixo:
 
 <div align="center">
 <sub>Figura 13 - Visão inicial do sistema</sub>
