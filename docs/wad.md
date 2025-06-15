@@ -26,13 +26,13 @@ De forma prática, o sistema é uma interface simples de tarefas que permite cri
 
 ## <a name="c2"></a>2. Visão Geral da Aplicação Web
 
-### 2.1. Personas (Semana 01 - opcional)
+### 2.1. Personas
 
-_Posicione aqui sua(s) Persona(s) em forma de texto markdown com imagens, ou como imagem de template preenchido. Atualize esta seção ao longo do módulo se necessário._
+A entrega em questão não contemplou esse item.
 
-### 2.2. User Stories (Semana 01 - opcional)
+### 2.2. User Stories
 
-_Posicione aqui a lista de User Stories levantadas para o projeto. Siga o template de User Stories e utilize a referência USXX para numeração (US01, US02, US03, ...). Indique todas as User Stories mapeadas, mesmo aquelas que não forem implementadas ao longo do projeto. Não se esqueça de explicar o INVEST de 1 User Storie prioritária._
+A entrega em questão não contemplou esse item.
 
 ---
 
@@ -49,7 +49,7 @@ O modelo lógico tem como objetivo fornecer uma visão geral dos processos opera
 **Modelo Lógico** <br>
 Abaixo, é possível observar o diagrama lógico:
 
-<div align="center"> <sub>Figura X (Número da imagem) - Modelo Lógico de Banco de Dados</sub> <img src="./assets/modelo_logico.jpg" width="100%"> <sup>Fonte: Material produzido pela autora (2025)</sup> </div>
+<div align="center"> <sub>Figura 1 - Modelo Lógico de Banco de Dados</sub> <img src="./assets/modelo_logico.jpg" width="100%"> <sup>Fonte: Material produzido pela autora (2025)</sup> </div>
 Este diagrama lógico inclui cinco principais entidades/tabelas: users, tasks, category, day_of_week e tasks_week_days. Ele explicita de forma clara os principais "objetos" e seus relacionamentos no sistema, como a tabela users, que controla o login dos usuários, e as tabelas restantes, que gerenciam as tarefas. Além disso, cada relação entre tabelas é marcada por linhas, com símbolos que representam relações "um para muitos". Embora o modelo aparente simplicidade, suas regras de negócio trazem um grau considerável de complexidade.<br>
 <br>
 
@@ -59,7 +59,7 @@ Embora o modelo represente uma estrutura robusta, com lógica de recorrência e 
 **Modelo Físico** <br>
 Agora, é possível observar o diagrama físico:
 
-<div align="center"> <sub>Figura X (Número da imagem) - Modelo Físico Representado</sub> <img src="./assets/modelo_fisico.png" width="100%"> <sup>Fonte: Material produzido pela autora através da plataforma Supabase (2025)</sup> </div>
+<div align="center"> <sub>Figura 2 - Modelo Físico Representado</sub> <img src="./assets/modelo_fisico.png" width="100%"> <sup>Fonte: Material produzido pela autora através da plataforma Supabase (2025)</sup> </div>
 
 O modelo físico foi gerado diretamente na plataforma Supabase, refletindo a estrutura real do banco de dados utilizado. Ele mantém as mesmas entidades e regras descritas no modelo lógico, mas com detalhes adicionais que facilitam a implementação do sistema. Abaixo há os esquemas do Banco de dados:
 
@@ -142,7 +142,7 @@ VALUES (1, 1, 1);
 
 Dessa forma, é possível perceber que, mesmo com um número relativamente pequeno de tabelas, a modelagem do banco de dados do Taskly apresenta uma complexidade de entendimento significativa. Tudo isso, busca emplementar uma arquitetura que prioriza a eficiência no manejo dos dados, visando sempre o melhor uso possível.
 
-### 3.1.1 BD e Models (Semana 5)
+### 3.1.1 BD e Models
 
 O Banco de Dados é responsável por armazenar todas as informações da aplicação de forma organizada. Já os Models são responsáveis por se comunicar com esse banco, realizando operações como criar, buscar, atualizar e excluir dados. Essa separação ajuda a manter o sistema mais organizado e fácil de manter. Abaixo há uma descrição do funcionamento do models principal do sistema
 
@@ -232,12 +232,12 @@ A edição de tarefas é feita pela função updateTask, que recebe o id da tare
 
 Nesta versão inicial do sistema, ainda não há validações de entrada para garantir a integridade dos dados fornecidos pelo usuário, o que permite que alguns campos, como categoria_id e last_reset, sejam inseridos com valor NULL. Em versões futuras, pretende-se incluir camadas de validação para assegurar que todos os dados inseridos ou atualizados no banco sejam válidos e consistentes com as regras de negócio do sistema.
 
-### 3.2. Arquitetura (Semana 5)
+### 3.2. Arquitetura
 
 A arquitetura de software define como os diferentes componentes de um sistema estão organizados e se comunicam. O sistema apresentado segue o padrão de arquitetura MVC (Model-View-Controller), separando a aplicação em três camadas principais: View (interface do usuário), Controller (lógica de controle) e Model (acesso e manipulação dos dados). A seguir, detalha-se o fluxo de dados entre essas camadas:
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Diagrama de componentes V2.0</sub>
+<sub>Figura 3 - Diagrama de componentes V2.0</sub>
 <img src="./assets/diagrama_componentes.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -262,19 +262,19 @@ A arquitetura de software define como os diferentes componentes de um sistema es
 
 **OBS:** É válido mencionar que alguns arquivos não são listados no diagrama, mas contribuem diretamente para o sistema, como script inicial "server.js" e os arquivos de rotas, representados no sistema por "/routes/index.js".
 
-### 3.3. Wireframes (Semana 03 - opcional)
+### 3.3. Wireframes
 
-_Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização)._
+A entrega em questão não contemplou esse item.
 
-### 3.4. Guia de estilos (Semana 05 - opcional)
+### 3.4. Guia de estilos
 
-_Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução._
+A entrega em questão não contemplou esse item.
 
-### 3.5. Protótipo de alta fidelidade (Semana 05 - opcional)
+### 3.5. Protótipo de alta fidelidade
 
-_Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização)._
+A entrega em questão não contemplou esse item.
 
-### 3.6. WebAPI e endpoints (Semana 05)
+### 3.6. WebAPI e endpoints
 
 Uma Web API (Interface de Programação de Aplicações para a Web) é um conjunto de regras que possibilita a comunicação de diferentes sistemas pela internet, trocando dados de forma estruturada. Ela funciona como uma ponte entre o frontend (interface que o usuário vê) e o backend (servidor que processa dados e lógica).
 
@@ -429,20 +429,20 @@ const response = await fetch("/tasks/add", {
 
 Dessa maneira, é possível observar como o sistema se comunica com os arquivos do servidor de forma clara e estruturada.
 
-### 3.7 Interface e Navegação (Semana 07)
+### 3.7 Interface e Navegação
 
 A interface de um sistema é o conjunto de elementos visuais que o usuário utiliza para compreender as informações apresentadas e se comunicar com o sistema. Ela funciona como uma porta de entrada, definindo como o usuário irá interagir e navegar pelas funcionalidades oferecidas. Por isso, é de extrema importância que a interface seja clara, intuitiva e agradável visualmente. Abaixo há uma visualização dos principais elementos que se repetem:
 
 - Menu de navegação superior: permite a navegação entre as telas do sistema
 <div align="center">
-<sub>Figura X (Número da imagem) - Visual do menu de navegação (navbar)</sub>
+<sub>Figura 4 - Visual do menu de navegação (navbar)</sub>
 <img src="./assets/navbar.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
 - Rodapé (vazio): funcionando apenas como indício do fim da página
 <div align="center">
-<sub>Figura X (Número da imagem) - Visual do menu de navegação (navbar)</sub>
+<sub>Figura 5 - Visual do menu de navegação (navbar)</sub>
 <img src="./assets/rodape.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -452,13 +452,13 @@ A interface de um sistema é o conjunto de elementos visuais que o usuário util
 1. Tela de entrada (home): Apresenta as principais tasks, além de algumas informações introdutórias sobre o sistema.
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Visual da Tela Home</sub>
+<sub>Figura 6 - Visual da Tela Home</sub>
 <img src="./assets/visual_inicial.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Visual com scrool da Tela Home</sub>
+<sub>Figura 7 - Visual com scrool da Tela Home</sub>
 <img src="./assets/tela_home.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -466,7 +466,7 @@ A interface de um sistema é o conjunto de elementos visuais que o usuário util
 2. Tela de gerenciamento: Permite ao usuário criar novas tasks, editar as já existentes ou excluí-las.
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Visual da Tela Home</sub>
+<sub>Figura 8- Visual da Tela de Gerenciamento</sub>
 <img src="./assets/tela_gerenciamento.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -476,7 +476,7 @@ A tela de gerenciamento conta com uma espécie de modal, que é exibido sempre q
 1. Modal de Adição: painél para inserir as informações de novas tarefas.
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Modal de Adição</sub>
+<sub>Figura 9 - Modal de Adição</sub>
 <img src="./assets/modal_adicao.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -484,7 +484,7 @@ A tela de gerenciamento conta com uma espécie de modal, que é exibido sempre q
 2. Modal de Edição: painél para editar as informações de tarefas já criadas.
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Modal de edição</sub>
+<sub>Figura 10 - Modal de edição</sub>
 <img src="./assets/modal_edicao.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -494,7 +494,7 @@ Ambas utilizam cores suaves, com destaque para tons de lilás, cor fortemente as
 As fontes escolhidas foram a Poppins e a Quicksand, que possuem traços simples e arredondados, contribuindo para a facilidade de leitura e para uma estética harmoniosa.
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Utilização das Fontes</sub>
+<sub>Figura 11 - Utilização das Fontes</sub>
 <img src="./assets/demonstracao_fontes.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -502,7 +502,7 @@ As fontes escolhidas foram a Poppins e a Quicksand, que possuem traços simples 
 Além disso, foi integrada uma API de acessibilidade, permitindo que o conteúdo se adapte a diferentes perfis de usuário, promovendo a inclusão digital.
 
 <div align="center">
-<sub>Figura X (Número da imagem) - Ícone de Acessibilidade</sub>
+<sub>Figura 12 - Ícone de Acessibilidade</sub>
 <img src="./assets/icone_acessibilidade.png" width="100%">
 <sup>Fonte: Material produzido pelos autores (2025)</sup>
 </div>
@@ -511,17 +511,49 @@ Em termos técnicos, a estrutura foi desenvolvida em EJS, com o uso de HTML, CSS
 
 ---
 
-## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
+## <a name="c4"></a>4. Desenvolvimento da Aplicação Web
 
-### 4.1 Demonstração do Sistema Web (Semana 8)
+### 4.1 Demonstração do Sistema Web
 
-_VIDEO: Insira o link do vídeo demonstrativo nesta seção_
-_Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar._
+[Link de acesso ao vídeo](https://youtu.be/9OksHi6g4Ko)
 
-### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
+O sistema web final consiste em um CRUD simples para cadastro de tasks, desenvolvido com as tecnologias Express, Supabase, HTML, JavaScript, EJS, entre outras. O desenvolvimento foi realizado durante o Módulo 2 (Aplicação Web) e teve como finalidade consolidar os conhecimentos adquiridos, além de contribuir para a construção de um portfólio. A visão inicial do sistema é disposta abaixo:
 
-_Indique pontos fortes e pontos a melhorar de maneira geral._
-_Relacione também quaisquer outras ideias que você tenha para melhorias futuras._
+<div align="center">
+<sub>Figura 13 - Visão inicial do sistema</sub>
+<img src="./assets/tela_home.png" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+Em termos de código, o projeto apresenta uma organização robusta de pastas, seguindo a arquitetura MVC (Model-View-Controller). Embora alguns arquivos permaneçam vazios, eles foram incluídos para ilustrar possíveis atualizações futuras a partir de uma versão 2.0.
+
+Do ponto de vista do usuário, o sistema oferece duas páginas principais: uma home, para visualização das tasks cadastradas, e outra de gerenciamento, que disponibiliza um CRUD completo (ilustrado nas imagens abaixo), permitindo adicionar, editar e excluir tarefas.
+
+<div align="center">
+<sub>Figura 14 - Funcionalidade de adiçao</sub>
+<img src="./assets/modal_adicao.png" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Figura 15 - Funcionalidade de edição</sub>
+<img src="./assets/modal_edicao.png" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Figura 16 - Funcionalidade de exclusão</sub>
+<img src="./assets/tela_gerenciamento.png" width="100%">
+<sup>Fonte: Material produzido pelos autores (2025)</sup>
+</div>
+
+Dessa forma, o sistema se mantém simples, porém funcional e com projeções futuras, atendendo a todos os requisitos estabelecidos para a entrega.
+
+### 4.2 Conclusões e Trabalhos Futuros
+
+De modo geral, o trabalho foi enriquecedor, proporcionando na prática a consolidação da implementação de um backend em uma página web, por meio de uma arquitetura organizada e robusta. No entanto, o tema revelou-se mais complexo do que o inicialmente previsto, resultando em uma entrega mais simples do que a planejada.
+
+Dessa forma, torna-se relevante considerar as condições e o período de desenvolvimento ao pensar em atualizações futuras, com uma entrega e um planejamento mais alinhados à realidade do projeto. Ainda assim, é importante destacar o valor que o trabalho agregou ao processo de aprendizagem e à construção do conhecimento.
 
 ## <a name="c5"></a>5. Referências
 

@@ -31,7 +31,7 @@ Taskly é uma aplicação web desenvolvida para auxiliar mulheres a organizarem 
 
 ## 📝 Link de demonstração
 
-_Coloque aqui o link para seu projeto publicado e link para vídeo de demonstração_ (Em andamento)
+[Acesso ao vídeo de demonstração da aplicação!](https://youtu.be/9OksHi6g4Ko)
 
 ## 📁 Estrutura de pastas
 
@@ -104,7 +104,5 @@ npm start
   Modelagem de dados e estrututa inicial do projeto.
 - 0.2.0 - 08/06/2025 <br>
   Conexão com a interface e estilização implementada.
-
-## 📋 Licença/License
-
-(Em desenvolvimento)
+- 0.3.0 - 15/06/2025 <br>
+  Inclusão do vídeo de demonstração e revisão do projeto.
